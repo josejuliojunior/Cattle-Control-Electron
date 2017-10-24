@@ -3,10 +3,17 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from  './home/home.component';
 import { LoginComponent } from './home/login/login.component';
+import { MenuComponent } from './home/menu/menu.component';
+import { CattleComponent } from './home/menu/cattle/cattle.component';
+import { WeightComponent } from './home/menu/weight/weight.component';
+import { ReportsComponent } from './home/menu/reports/reports.component';
 
-const appRoutes: Routes = [
-  {path: '', component: HomeComponent },
-  {path: 'login', component: LoginComponent }
+const appRoutes: Routes =[
+  { path: '', component: LoginComponent },
+  { path: 'menu', component: MenuComponent },
+  { path: 'cattle', component: CattleComponent },
+  { path: 'weight', component: WeightComponent },
+  { path: 'reports', component: ReportsComponent }
 ];
 
 @NgModule({
@@ -16,6 +23,4 @@ const appRoutes: Routes = [
   exports: [RouterModule]
 })
 
-export class AppRoutingModule {
-  
-}
+export class AppRoutingModule { }

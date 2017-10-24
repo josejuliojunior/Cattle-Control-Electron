@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -12,14 +14,11 @@ import { ReportsComponent } from './home/menu/reports/reports.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import { AuthService } from './home/login/auth.service';
 
-const appRoutes: Routes =[
-  { path: ' ', component: LoginComponent },
-  { path: 'menu', component: MenuComponent },
-  { path: 'cattle', component: CattleComponent },
-  { path: 'weight', component: WeightComponent },
-  { path: 'reports', component: ReportsComponent }
-];
+
+
 
 @NgModule({
   declarations: [
@@ -31,14 +30,16 @@ const appRoutes: Routes =[
     WeightComponent,
     ReportsComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(appRoutes)
+    FormsModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
