@@ -19,7 +19,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { AuthService } from './home/login/auth.service';
 import { CattleInfoComponent } from './home/menu/cattle/cattle-info/cattle-info.component';
-
+import { AppService } from './app.service';
 
 
 
@@ -48,7 +48,8 @@ import { CattleInfoComponent } from './home/menu/cattle/cattle-info/cattle-info.
     MomentModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    AppService
   ],
   bootstrap: [AppComponent]
 })

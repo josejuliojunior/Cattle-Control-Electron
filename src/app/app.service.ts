@@ -11,8 +11,12 @@ export class AppService {
     return this.http.get('https://immense-meadow-76200.herokuapp.com/cattles', body)
   }
 
-  getCattlesByID(body: any) {
-    return this.http.get('http://localhost:4200/cattle/:id', body)
+  getCattleByID(id) {
+    return this.http.get(`http://localhost:3000/cattles/${id}`)
+  }
+
+  postWeight(body: any) {
+    return this.http.post('http://localhost:3000/weights', body)
   }
 
   // getWeightByID(body: any) {

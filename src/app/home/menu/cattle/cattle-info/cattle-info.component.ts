@@ -4,6 +4,7 @@ import { Http, HttpModule, Response } from '@angular/http';
 import {BrowserModule} from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import { AppService } from 'app/app.service';
 
 
 @Component({
@@ -15,26 +16,26 @@ export class CattleInfoComponent implements OnInit {
 
 cattleInfo = []
 weightInfo = []
+// weightDate = []
 
-  constructor(private http: Http, private route: ActivatedRoute) {}
+  constructor(private appService: AppService, private http: Http, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     let id = this.route.snapshot.params['id'];
     this.getCattleByID(id)
-    // this.getWeightByID(id)
   }
 
 
     getCattleByID(id) {
-      this.http.get('http://localhost:3000/cattles/'+ id)
+      this.appService.getCattleByID(id)
       .subscribe(
         (response: Response) => {
           let data = response.json()
-          data.forEach(cattle => {
-            console.log(cattle)
-            this.cattleInfo.push(cattle)
-            this.weightInfo.push(cattle.weight)
-          })
+            this.cattleInfo.push(data)
+            data.weights.forEach(weight => {
+              this.weightInfo.push(weight)
+            })
+
         },
         err => {
           console.log("Error occured.")
