@@ -7,7 +7,7 @@ export class AuthService {
   constructor(private http: Http, private router: Router) { }
 
   loginUser(body: any) {
-    return this.http.post('http://localhost:3000/login', body)
+    return this.http.post('https://immense-meadow-76200.herokuapp.com/login', body)
   }
 
 }

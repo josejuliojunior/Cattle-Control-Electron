@@ -7,13 +7,17 @@ import { MenuComponent } from './home/menu/menu.component';
 import { CattleComponent } from './home/menu/cattle/cattle.component';
 import { WeightComponent } from './home/menu/weight/weight.component';
 import { ReportsComponent } from './home/menu/reports/reports.component';
+import { CattleInfoComponent } from './home/menu/cattle/cattle-info/cattle-info.component';
 
 const appRoutes: Routes =[
   { path: '', component: LoginComponent },
   { path: 'menu', component: MenuComponent },
   { path: 'cattle', component: CattleComponent },
+  { path: 'cattle/:id', component: CattleInfoComponent },
   { path: 'weight', component: WeightComponent },
+  { path: 'weight/:id', component: WeightComponent },
   { path: 'reports', component: ReportsComponent }
+
 ];
 
 @NgModule({
