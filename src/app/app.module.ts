@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { MomentModule } from 'angular2-moment';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -20,6 +21,7 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { AuthService } from './home/login/auth.service';
 import { CattleInfoComponent } from './home/menu/cattle/cattle-info/cattle-info.component';
 import { AppService } from './app.service';
+import { ModalComponent } from './modal/modal.component';
 
 
 
@@ -37,7 +39,8 @@ import { AppService } from './app.service';
     HeaderComponent,
     FooterComponent,
     SigninComponent,
-    CattleInfoComponent
+    CattleInfoComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,8 @@ import { AppService } from './app.service';
     FormsModule,
     HttpModule,
     HttpClientModule,
-    MomentModule
+    MomentModule,
+    NgbModule
   ],
   providers: [
     AuthService,
