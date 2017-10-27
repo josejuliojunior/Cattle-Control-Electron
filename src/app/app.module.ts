@@ -49,6 +49,7 @@ import { ModalComponent } from './modal/modal.component';
     HttpModule,
     HttpClientModule,
     MomentModule,
+    NgbModule.forRoot(),
     NgbModule
   ],
   providers: [

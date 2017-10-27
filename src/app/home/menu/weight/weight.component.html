@@ -23,29 +23,97 @@
                       class="form-control"
                       type=""
                       name="weight"
-                      ng-model=""
+                      val="xxs"
+                      ng-model="xxs"
                       ngModel
                       required>
           </div>
       </div>
-      <div class="form-group row">
+
+      <div class="form-group row" ng-app="application" ng-controller="myApp">
           <label for="date-birth" class="col-sm-2 col-form-label">Date:</label>
           <div class="col-sm-2.5">
               <input  id="dateWeight"
                       class="form-control"
                       type="date"
                       name="dateWeight"
-                      ng-model="dateWeight"
-                      ngModel
+                      [ngModel]="today | date: 'yyyy-MM-dd'"
                       required>
           </div>
+
       </div>
       <br>
         <button   type="submit"
                   class="btn btn-primary"
                   name="submit"
-                  value="weight">Confirm weight</button>
+                  value="weight"
+                  (click)="open(content)">Confirm weight</button>
         <a        routerLink="/menu"
                   class="btn btn-danger">Cancel</a>
     </form>
 </div>
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-12 col-md-offset-1">
+              <div class="panel panel-default panel-table">
+                <div class="panel-heading">
+                  <div class="row">
+                    <div class="col col-xs-6">
+                      <h3 class="panel-title">Weight uptade</h3>
+                    </div>
+                    <div class="col col-xs-6 text-right">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="c('Close click')">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <div class="panel-body">
+                  <table class="table table-striped table-bordered table-list text-center">
+                    <thead>
+                      <tr>
+                          <th class="hidden-xs">ID</th>
+                          <th>Breed</th>
+                          <th>DoB</th>
+                          <th>Sex</th>
+                          <th>Origin</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                            <tr *ngFor="let cattle of cattleInfo">
+                              <td class="hidden-xs">{{cattle.id}}</td>
+                              <td>{{cattle.breedName}}</td>
+                              <td>{{cattle.dob | date: 'yyyy-MM-dd'}}</td>
+                              <td>{{cattle.sex}}</td>
+                              <td>{{cattle.origin}}</td>
+                            </tr>
+                          </tbody>
+                  </table>
+
+                  <table class="table table-striped table-bordered table-list text-center">
+                    <thead>
+                      <tr>
+                          <th class="hidden-xs">Date</th>
+                          <th class="hidden-xs">Weights</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                            <tr *ngFor="let weight of weightInfo; let i = index " >
+                              <td class="hidden-xs">{{weight.date | date: 'dd/MM/yyyy'}}</td>
+                              <td class="hidden-xs">{{weight.weight}}</td>
+                            </tr>
+                          </tbody>
+                  </table>
+                </div>
+              </div>
+          </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>
