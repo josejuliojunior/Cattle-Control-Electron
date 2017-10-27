@@ -6,7 +6,7 @@ import { AppService } from 'app/app.service';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { Http, HttpModule, Response } from '@angular/http';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from '@angular/forms'
 import { ModalComponent } from 'app/modal/modal.component';
 import { CattleInfoComponent } from 'app/home/menu/cattle/cattle-info/cattle-info.component';
