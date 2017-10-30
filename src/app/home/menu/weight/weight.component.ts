@@ -7,8 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { Http, HttpModule, Response } from '@angular/http';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import {FormsModule} from '@angular/forms'
-import { ModalComponent } from 'app/modal/modal.component';
+import { FormsModule } from '@angular/forms'
 import { CattleInfoComponent } from 'app/home/menu/cattle/cattle-info/cattle-info.component';
 
 @Component({
@@ -22,7 +21,7 @@ export class WeightComponent implements OnInit {
 
   cattleInfo = []
   weightInfo = []
-
+  xxs= 'Hiii dude'
   today = new Date()
 
   constructor(private appService: AppService, private router: Router, private modalService: NgbModal,
@@ -52,8 +51,8 @@ export class WeightComponent implements OnInit {
 
   onSubmitWeight(form: NgForm) {
     const cattleID = form.value.cattleID;
-    const weight = form.value.weight
-    const date = form.value.dateWeight
+    const weight = form.value.weight;
+    const date = form.value.dateWeight;
     const body = {
       cattleID: cattleID,
       weight: weight,

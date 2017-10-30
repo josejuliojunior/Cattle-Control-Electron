@@ -10,31 +10,36 @@
                     <h3 class="panel-title">Cattle inventory</h3>
                   </div>
                   <div class="col col-xs-6 text-right">
-                    <button type="button" class="btn btn-sm btn-primary btn-create">Create New</button>
+                    <button type="button" class="btn btn-sm btn-primary btn-create" (click)="open(content)">Create New</button>
                   </div>
                 </div>
               </div>
               <br>
-              <div class="panel-body">
+              <div class="panel-body col-sm-12">
                 <table class="table table-striped table-bordered table-list text-center">
                   <thead>
                     <tr>
-                        <th><em class="fa fa-cog"></em></th>
+                        <th ><em class="fa fa-cog"></em></th>
                         <th class="hidden-xs">ID</th>
                         <th>Breed</th>
                         <th>DoB</th>
+                        <th>Age</th>
                         <th>Sex</th>
                         <th>Origin</th>
                     </tr>
                   </thead>
                   <tbody>
-                          <tr *ngFor="let cattle of cattles">
+                          <tr *ngFor="let cattle of cattles; let today of today">
                             <td align="center">
-                              <a class="btn btn-default" routerLink="/cattle/{{cattle.id}}"><em class="fa fa-pencil"></em></a>
+                              <div class="btn-group">
+                                <a class="btn btn-default" routerLink="/cattle/{{cattle.id}}"><em class="fa fa-pencil"></em></a>
+                                <a class="btn btn-default" (click)="deleteCattleByID()"><em class="fa fa-trash"></em></a>
+                              </div>
                             </td>
                             <td class="hidden-xs">{{cattle.id}}</td>
                             <td>{{cattle.breedName}}</td>
                             <td>{{cattle.dob | date: 'dd/MM/yyyy'}}</td>
+                            <td>{{today}} </td>
                             <td>{{cattle.sex}}</td>
                             <td>{{cattle.origin}}</td>
                           </tr>
@@ -45,3 +50,94 @@
         </div>
   </div>
 </div>
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-md-offset-1">
+        <div class="panel-heading">
+          <br>
+          <div class="row">
+            <div class="col col-xs-6">
+              <h3>Create new:</h3>
+            </div>
+            <div class="col col-xs-6 text-right">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="c('Close click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="container" ng-app="application" ng-controller="AppCtrl">
+          <form action="" method="post" name="weight_Form" class="form-weight" (ngSubmit)=onSubmitWeight(weightF) #weightF="ngForm">
+            <div class="form-group row">
+                <label for="date-birth" class="col-sm-2 col-form-label">Breed</label>
+                <div class="col-sm-2.5">
+                    <select   id="breedName"
+                              class="form-control"
+                              name="breedName"
+                              required>
+                      <option [value]="pow">angus</option>
+                      <option [value]="pow">red angus</option>
+                      <option [value]="pow">nelore</option>
+                      <option [value]="pow">guzera</option>
+                      <option [value]="pow">brangus</option>
+                      <option [value]="pow">gir</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row" ng-app="application" ng-controller="myApp">
+                <label for="date-birth" class="col-sm-2 col-form-label">DoB:</label>
+                <div class="col-sm-2.5">
+                    <input  id="dob"
+                            class="form-control"
+                            type="date"
+                            name="dob"
+                            [ngModel]="today | date: 'yyyy-MM-dd'"
+                            required>
+                </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label" for="power">Sex</label>
+              <div class="col-sm-2.5">
+                <select class="form-control"
+                        id="sex"
+                        required
+                        name="sex">
+                  <option [value]="pow">male</option>
+                  <option [value]="pow">female</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+                <label for="date-birth" class="col-sm-2 col-form-label">Origin:</label>
+                <div class="col-sm-2.5">
+                    <input  id="origin"
+                            class="form-control"
+                            type=""
+                            name="origin"
+                            ng-model=""
+                            ngModel
+                            required>
+                </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div >
+      <button   type="submit"
+                class="btn btn-primary"
+                name="submit"
+                value="weight"
+                (click)="open(content)">Confirm</button>
+      <button   type="button"
+                class="btn btn-danger"
+                (click)="c('Close click')">Cancel</button>
+    </div>
+  </div>
+</ng-template>

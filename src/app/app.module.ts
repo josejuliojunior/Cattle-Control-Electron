@@ -17,11 +17,10 @@ import { ReportsComponent } from './home/menu/reports/reports.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { SigninComponent } from './auth/signin/signin.component';
 import { AuthService } from './home/login/auth.service';
 import { CattleInfoComponent } from './home/menu/cattle/cattle-info/cattle-info.component';
 import { AppService } from './app.service';
-import { ModalComponent } from './modal/modal.component';
+
 
 
 
@@ -38,9 +37,7 @@ import { ModalComponent } from './modal/modal.component';
     ReportsComponent,
     HeaderComponent,
     FooterComponent,
-    SigninComponent,
-    CattleInfoComponent,
-    ModalComponent
+    CattleInfoComponent
   ],
   imports: [
     BrowserModule,

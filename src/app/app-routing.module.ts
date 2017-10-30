@@ -8,7 +8,7 @@ import { CattleComponent } from './home/menu/cattle/cattle.component';
 import { WeightComponent } from './home/menu/weight/weight.component';
 import { ReportsComponent } from './home/menu/reports/reports.component';
 import { CattleInfoComponent } from './home/menu/cattle/cattle-info/cattle-info.component';
-import { ModalComponent } from './modal/modal.component';
+
 
 const appRoutes: Routes =[
   { path: '', component: LoginComponent },
@@ -16,7 +16,6 @@ const appRoutes: Routes =[
   { path: 'cattle', component: CattleComponent },
   { path: 'cattle/:id', component: CattleInfoComponent },
   { path: 'weight', component: WeightComponent },
-  { path: 'weight/:id', component: ModalComponent },
   { path: 'reports', component: ReportsComponent }
 
 ];
