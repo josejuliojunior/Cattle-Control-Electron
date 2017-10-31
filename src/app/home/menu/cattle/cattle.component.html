@@ -23,7 +23,7 @@
                         <th class="hidden-xs">ID</th>
                         <th>Breed</th>
                         <th>DoB</th>
-                        <th>Age</th>
+                        <!-- <th>Age</th> -->
                         <th>Sex</th>
                         <th>Origin</th>
                     </tr>
@@ -33,13 +33,13 @@
                             <td align="center">
                               <div class="btn-group">
                                 <a class="btn btn-default" routerLink="/cattle/{{cattle.id}}"><em class="fa fa-pencil"></em></a>
-                                <a class="btn btn-default" (click)="deleteCattleByID()"><em class="fa fa-trash"></em></a>
+                                <a class="btn btn-default" (click)="deleteCattleByID(cattle.id)"><em class="fa fa-trash"></em></a>
                               </div>
                             </td>
                             <td class="hidden-xs">{{cattle.id}}</td>
                             <td>{{cattle.breedName}}</td>
                             <td>{{cattle.dob | date: 'dd/MM/yyyy'}}</td>
-                            <td>{{today}} </td>
+                            <!-- <td>{{today}} </td> -->
                             <td>{{cattle.sex}}</td>
                             <td>{{cattle.origin}}</td>
                           </tr>
@@ -71,20 +71,16 @@
         </div>
         <br>
         <div class="container" ng-app="application" ng-controller="AppCtrl">
-          <form action="" method="post" name="weight_Form" class="form-weight" (ngSubmit)=onSubmitWeight(weightF) #weightF="ngForm">
+          <form action="" method="post" name="cattle_Form" class="form-cattle" (ngSubmit)=onSubmitCattle(cattleF,content) #cattleF="ngForm">
             <div class="form-group row">
                 <label for="date-birth" class="col-sm-2 col-form-label">Breed</label>
                 <div class="col-sm-2.5">
                     <select   id="breedName"
                               class="form-control"
                               name="breedName"
-                              required>
-                      <option [value]="pow">angus</option>
-                      <option [value]="pow">red angus</option>
-                      <option [value]="pow">nelore</option>
-                      <option [value]="pow">guzera</option>
-                      <option [value]="pow">brangus</option>
-                      <option [value]="pow">gir</option>
+                              required
+                              ngModel>
+                      <option *ngFor="let breedName of breedName" [value]="">{{breedName}}</option>
                     </select>
                 </div>
             </div>
@@ -105,9 +101,10 @@
                 <select class="form-control"
                         id="sex"
                         required
-                        name="sex">
-                  <option [value]="pow">male</option>
-                  <option [value]="pow">female</option>
+                        name="sex"
+                        ngModel = "def"
+                        ng-init = "def = sex[0]">
+                  <option *ngFor="let sex of sex" [value]="">{{sex}}</option>
                 </select>
               </div>
             </div>
@@ -123,21 +120,24 @@
                             required>
                 </div>
             </div>
+            <div class="modal-footer">
+              <div >
+                <button   type="submit"
+                          class="btn btn-primary"
+                          name="submit"
+                          value="cattle"
+                          data-dismiss="modal"
+                          aria-label="Close"
+                          >Confirm</button>
+                <button   type="button"
+                          class="btn btn-danger"
+                          (click)="c('Close click')">Cancel</button>
+              </div>
+            </div>
           </form>
         </div>
       </div>
     </div>
   </div>
-  <div class="modal-footer">
-    <div >
-      <button   type="submit"
-                class="btn btn-primary"
-                name="submit"
-                value="weight"
-                (click)="open(content)">Confirm</button>
-      <button   type="button"
-                class="btn btn-danger"
-                (click)="c('Close click')">Cancel</button>
-    </div>
-  </div>
+
 </ng-template>

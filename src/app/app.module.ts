@@ -20,7 +20,7 @@ import { FooterComponent } from './footer/footer.component';
 import { AuthService } from './home/login/auth.service';
 import { CattleInfoComponent } from './home/menu/cattle/cattle-info/cattle-info.component';
 import { AppService } from './app.service';
-
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 
 
@@ -47,7 +47,8 @@ import { AppService } from './app.service';
     HttpClientModule,
     MomentModule,
     NgbModule.forRoot(),
-    NgbModule
+    NgbModule,
+    Ng2SmartTableModule
   ],
   providers: [
     AuthService,

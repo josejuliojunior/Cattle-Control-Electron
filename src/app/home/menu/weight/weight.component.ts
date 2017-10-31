@@ -21,7 +21,7 @@ export class WeightComponent implements OnInit {
 
   cattleInfo = []
   weightInfo = []
-  xxs= 'Hiii dude'
+
   today = new Date()
 
   constructor(private appService: AppService, private router: Router, private modalService: NgbModal,
@@ -51,8 +51,8 @@ export class WeightComponent implements OnInit {
 
   onSubmitWeight(form: NgForm) {
     const cattleID = form.value.cattleID;
-    const weight = form.value.weight;
-    const date = form.value.dateWeight;
+    const weight = form.value.weight
+    const date = form.value.dateWeight
     const body = {
       cattleID: cattleID,
       weight: weight,
@@ -63,7 +63,8 @@ export class WeightComponent implements OnInit {
     .subscribe(
       (response: Response) => {
         let data = response.json();
-        this.getCattleByID(cattleID)
+        console.log(this.getCattleByID(cattleID));
+        this.getCattleByID(cattleID);
       },
       (error) => console.log(error)
     )
